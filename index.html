@@ -26,14 +26,20 @@
     //<source src="http://213.202.233.218:8000/live/49869f3144af4d918f7c9589143b9ea4/index.m3u8" type="application/x-mpegURL">
   //</video>
 	
-	<script type="text/javascript" src="http://cdn.clappr.io/latest/clappr.min.js"></script>
-	
-	<body>
-  <div id="player"></div>
-  <script>
-    var player = new Clappr.Player({source: "http://213.202.233.218:8000/live/49869f3144af4d918f7c9589143b9ea4/index.m3u8", parentId: "#player"});
-  </script>
-</body>
+	<script src="https://cdn.bootcss.com/flv.js/1.5.0/flv.min.js"></script>
+<video id="videoElement"></video>
+<script>
+    if (flvjs.isSupported()) {
+        var videoElement = document.getElementById('videoElement');
+        var flvPlayer = flvjs.createPlayer({
+            type: 'flv',
+            url: 'http://213.202.233.218:8000/live/49869f3144af4d918f7c9589143b9ea4.flv'
+        });
+        flvPlayer.attachMediaElement(videoElement);
+        flvPlayer.load();
+        flvPlayer.play();
+    }
+</script>
   
   <script>
   </script>
